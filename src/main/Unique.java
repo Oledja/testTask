@@ -21,9 +21,9 @@ public class Unique {
         }
 
         for (int i = arg; i <= str.length() - 1; i++) {
-            StringBuilder n = new StringBuilder(str).insert(i, ".");
-            uniqStrings.add(n.toString());
-            uniqStrings.addAll(findUniqueCombinations(n.toString()));
+            StringBuilder newWord = new StringBuilder(str).insert(i, ".");
+            uniqStrings.add(newWord.toString());
+            uniqStrings.addAll(findUniqueCombinations(newWord.toString()));
         }
         return uniqStrings;
     }
