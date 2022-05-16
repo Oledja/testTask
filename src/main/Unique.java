@@ -7,12 +7,13 @@ public class Unique {
 
     public String[] findAllCombinationWithDots(String string) {
         checkArguments(string);
-        List<StringBuffer> stringBuffers = findUniqueCombinations(string);
-        return convertListToStringArray(stringBuffers);
+        List<String> strings = findUniqueCombinations(string);
+        strings.add(string);
+        return convertListToStringArray(strings);
     }
 
-    private List<StringBuffer> findUniqueCombinations(String str) {
-        List<StringBuffer> uniqStrings = new ArrayList<>();
+    private List<String> findUniqueCombinations(String str) {
+        List<String> uniqStrings = new ArrayList<>();
         int arg = 1;
 
         if (str.contains(".")){
@@ -20,17 +21,17 @@ public class Unique {
         }
 
         for (int i = arg; i <= str.length() - 1; i++) {
-            StringBuffer n = new StringBuffer(str).insert(i, ".");
-            uniqStrings.add(n);
+            StringBuilder n = new StringBuilder(str).insert(i, ".");
+            uniqStrings.add(n.toString());
             uniqStrings.addAll(findUniqueCombinations(n.toString()));
         }
         return uniqStrings;
     }
 
-    private String[] convertListToStringArray(List<StringBuffer> list) {
+    private String[] convertListToStringArray(List<String> list) {
         String[] strings = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            strings[i] = list.get(i).toString();
+            strings[i] = list.get(i);
             }
         return strings;
     }
