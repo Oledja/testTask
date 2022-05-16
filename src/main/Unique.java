@@ -20,13 +20,10 @@ public class Unique {
         }
 
         StringBuffer result = new StringBuffer(str);
-        for (int i = arg; i <= str.length(); i++) {
+        for (int i = arg; i <= str.length() - 1; i++) {
             result.insert(i, ".");
             StringBuffer n = new StringBuffer(str).insert(i, ".");
             uniqStrings.add(n);
-            if (i >= str.length() - 1) {
-                break;
-            }
             uniqStrings.addAll(findUniqueCombinations(n.toString()));
         }
         return uniqStrings;
