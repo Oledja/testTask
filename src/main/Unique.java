@@ -19,9 +19,7 @@ public class Unique {
             arg = str.lastIndexOf(".")  + 2;
         }
 
-        StringBuffer result = new StringBuffer(str);
         for (int i = arg; i <= str.length() - 1; i++) {
-            result.insert(i, ".");
             StringBuffer n = new StringBuffer(str).insert(i, ".");
             uniqStrings.add(n);
             uniqStrings.addAll(findUniqueCombinations(n.toString()));
